@@ -104,12 +104,12 @@ def setup():
             print("creating venv")
             cm(f"{PYTHON_NAME} -m venv venv")
             print("updating venv")
-            cm(f"{PYTHON} -m pip install --upgrade pip > nul")
+            cm(f"{PYTHON} -m pip install --upgrade pip > nul 2>&1")
         print("\033[0m", end="")
         print("checking dependencies...", end="")
         if "danielutils" not in [v.split(" ")[0] for v in cm(f"{PIP} list").split("\n")]:
             print("\ninstalling dependencies to venv")
-            print(cm(f"{PIP} --quiet install danielutils > nul"))
+            print(cm(f"{PIP} --quiet install danielutils > nul 2>&1"))
         else:
             print("ok")
     update()
